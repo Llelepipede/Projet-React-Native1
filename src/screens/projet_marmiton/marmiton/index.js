@@ -14,6 +14,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import LoginMarmiton from '../login';
 import ListRecette from '../listRecette';
+import Favoris from '../favoris';
+import RecetteDetail from '../recetteDetail';
 
 import styled from 'styled-components';
 
@@ -32,6 +34,16 @@ const Marmiton = props => {
           name="ListRecette"
           component={ListRecette}
           options={{title: 'Nos Recettes'}}
+        />
+        <Stack.Screen
+          name="Favoris"
+          component={Favoris}
+          options={{title: 'Vos Favoris'}}
+        />
+        <Stack.Screen
+          name="RecetteDetail"
+          component={RecetteDetail}
+          options={{title: 'v'}}
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -13,6 +13,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import data from '../../../api_backup/marmiton/api.json';
 import RecetteButton from '../../../components/RecetteButton';
 import LogoMarmiton from '../../../components/LogoMarmiton';
+import getFavoris from '../../../utils/getFavoris';
 
 import styled from 'styled-components';
 
@@ -28,24 +29,24 @@ function ListRecette({navigation}) {
     //    ->const {username, password} = inputs: destructuration de inputs pour
     // recuperer username et password en tant que variable separer
 
-    //   axios({
-    //     method: 'GET',
-    //     url: 'https://tasty.p.rapidapi.com/recipes/list',
-    //     params: {from: '0', size: '20'},
-    //     headers: {
-    //       'X-RapidAPI-Key': '2eb89bc3f1mshc34758fad5e37b3p17e518jsnd04e8741ce92',
-    //       'X-RapidAPI-Host': 'tasty.p.rapidapi.com',
-    //     },
+    // axios({
+    //   method: 'GET',
+    //   url: 'https://tasty.p.rapidapi.com/recipes/list',
+    //   params: {from: '0', size: '20'},
+    //   headers: {
+    //     'X-RapidAPI-Key': '2eb89bc3f1mshc34758fad5e37b3p17e518jsnd04e8741ce92',
+    //     'X-RapidAPI-Host': 'tasty.p.rapidapi.com',
+    //   },
+    // })
+    //   .then(res => {
+    //     console.log('fin du get');
+    //     setIsLoading(false);
+    //     setRecette(res.data);
+    //     console.log(res);
     //   })
-    //     .then(res => {
-    //       console.log('fin du get');
-    //       setIsLoading(false);
-    //       setRecette(res.data);
-    //       console.log(res);
-    //     })
-    //     .catch(err => {
-    //       console.log(err);
-    //     });
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
   }, []);
 
   return isLoading ? (
@@ -57,11 +58,21 @@ function ListRecette({navigation}) {
       />
     </View>
   ) : (
-    <FlatList
-      data={recette}
-      renderItem={props => <RecetteButton tRecette={props.item} />}
-      keyExtractor={item => item.id}
-    />
+    <View>
+      <LogoMarmiton />
+      <Button
+        title="Voir vos favoris"
+        onPress={() => navigation.navigate('Favoris')}
+      />
+      <RecetteList
+        data={recette}
+        renderItem={props => (
+          <RecetteButton tRecette={props.item} navigation={navigation} />
+        )}
+        keyExtractor={item => item.show_id}
+      />
+    </View>
+
     // <View>
     //   {recette.map(item => {
     //     return <RecetteButton tRecette={item} />;
@@ -73,5 +84,13 @@ function ListRecette({navigation}) {
     // </View>
   );
 }
+
+const RecetteList = styled.FlatList`
+  height: 85%;
+  /* border: 2px solid red; */
+  /* display: grid; */
+  /* flex-direction: wrap; */
+  /* justify-content: space-between; */
+`;
 
 export default ListRecette;

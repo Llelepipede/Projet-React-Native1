@@ -5,22 +5,19 @@ import styled from 'styled-components';
 // factorisation du code: on cree un componnent Button
 //    ->{onPress,label}: destructuration
 
-const LogoMarmiton = ({tRecette}) => {
-  console.log(tRecette.thumbnail_url);
+const LogoMarmiton = () => {
   return (
-    <TouchableOpacity>
-      <LogoMarmi
-        source={{
-          uri: 'https://upload.wikimedia.org/wikipedia/fr/thumb/a/a8/Logo_Marmiton_%282011%29.svg/2560px-Logo_Marmiton_%282011%29.svg.png',
-        }}
-      />
-    </TouchableOpacity>
+    <LogoMarmi
+      source={require('../../api_backup/img/logo-marmiton-22-600x395.jpg')}
+    />
   );
 };
 
 const LogoMarmi = styled.Image`
   width: 100%;
-  height: 100px;
+  height: 70px;
+  padding-bottom: -10px;
+  background-color: red;
 `;
 
 export default LogoMarmiton;
