@@ -14,7 +14,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import styled from 'styled-components';
 
-function LoginMarmiton({navigation}) {
+const LoginMarmiton = ({navigation}) => {
   // creation de la fonction qui vas envoyer les donnees a l'API
 
   return (
@@ -26,6 +26,6 @@ function LoginMarmiton({navigation}) {
       />
     </View>
   );
-}
+};
 
 export default LoginMarmiton;

@@ -17,12 +17,23 @@ import getFavoris from '../../../utils/getFavoris';
 
 import styled from 'styled-components';
 
-function RecetteDetail({tRecette}) {
+const RecetteDetail = ({route}) => {
+  const [recette, setRecette] = React.useState(route.params.tRecette);
+
+  useEffect(() => {
+    console.log(recette);
+  });
+
   return (
     <View>
-      <Text>Prout</Text>
+      <Text>{recette.name}</Text>
+      <View>
+        {recette.instructions.map(item => {
+          return <Text>{item.display_text}</Text>;
+        })}
+      </View>
     </View>
   );
-}
+};
 
 export default RecetteDetail;

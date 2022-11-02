@@ -17,7 +17,7 @@ import getFavoris from '../../../utils/getFavoris';
 
 import styled from 'styled-components';
 
-function ListRecette({navigation}) {
+const ListRecette = ({navigation}) => {
   const [recette, setRecette] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -83,7 +83,7 @@ function ListRecette({navigation}) {
     //   />
     // </View>
   );
-}
+};
 
 const RecetteList = styled.FlatList`
   height: 85%;

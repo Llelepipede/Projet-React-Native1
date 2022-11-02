@@ -8,7 +8,7 @@ import LoginForm from '../../../components/loginForm';
 import LogoMarmiton from '../../../components/LogoMarmiton';
 import RecetteButton from '../../../components/RecetteButton';
 
-function Favoris({navigation}) {
+const Favoris = ({navigation}) => {
   const [favoris, setFavoris] = useState([]);
 
   useFocusEffect(() => {
@@ -36,7 +36,7 @@ function Favoris({navigation}) {
   //     <Text>Loading</Text>
   //   </View>
   // );
-}
+};
 const RecetteList = styled.FlatList`
   height: 90%;
   /* border: 2px solid red; */

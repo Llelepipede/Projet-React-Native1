@@ -43,7 +43,7 @@ const Marmiton = props => {
         <Stack.Screen
           name="RecetteDetail"
           component={RecetteDetail}
-          options={{title: 'v'}}
+          options={{title: 'Recette en detail:'}}
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -21,7 +21,10 @@ const RecetteButton = ({tRecette, navigation}) => {
   };
   return (
     <ProductDiv>
-      <RecetteDiv onPress={props => navigation.navigate('RecetteDetail')}>
+      <RecetteDiv
+        onPress={props =>
+          navigation.navigate('RecetteDetail', {tRecette: tRecette})
+        }>
         <RecetteTitle>{tRecette.name}</RecetteTitle>
         <Thumbnail
           source={{
@@ -29,11 +32,13 @@ const RecetteButton = ({tRecette, navigation}) => {
           }}
         />
       </RecetteDiv>
-      <StarFavoris onPress={() => AddOrRemoveToFavorite(tRecette)}>
+      <StarFavoris
+        onPress={() => {
+          AddOrRemoveToFavorite(tRecette);
+          tRecette = tRecette;
+        }}>
         <StarFavorisImage
-          source={{
-            uri: tRecette.thumbnail_url,
-          }}
+          source={require('../../api_backup/img/Star_.svg.png')}
         />
       </StarFavoris>
     </ProductDiv>
@@ -53,14 +58,17 @@ const Thumbnail = styled.Image`
 `;
 const StarFavoris = styled.TouchableOpacity`
   position: absolute;
+  background-image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Star%2A.svg/2234px-Star%2A.svg.png';
   margin-left: 70%;
   margin-right: 25%;
   width: 20px;
   height: 20px;
-  background-color: yellow;
 `;
 
-const StarFavorisImage = styled.Image``;
+const StarFavorisImage = styled.Image`
+  width: 20px;
+  height: 20px;
+`;
 
 const RecetteDiv = styled.TouchableOpacity`
   width: 50%;
